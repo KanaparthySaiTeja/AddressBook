@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class AddressBook {
 	public static void main(String[] args) {
@@ -110,6 +111,8 @@ public class AddressBook {
 				String city = sc.nextLine();
 				hashMap.values().stream().forEach(c->cityCon.addAll(c.viewByCity(city)));
 				System.out.println("View By City : "+cityCon);
+				System.out.println("count of people in the "+city+": "+cityCon.size());
+
 			}
 			if (k == 4) {
 				ArrayList<Contact> stateCon=new ArrayList<Contact>();
@@ -118,6 +121,8 @@ public class AddressBook {
 				String state = sc.nextLine();
 				hashMap.values().stream().forEach(c->stateCon.addAll(c.viewByState(state)));
 				System.out.println(stateCon);
+				System.out.println("count of people in the "+state+": "+stateCon.size());
+
 			}
 		}
 	}
