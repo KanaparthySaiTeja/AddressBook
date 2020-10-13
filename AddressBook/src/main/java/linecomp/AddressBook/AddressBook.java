@@ -1,11 +1,11 @@
 package linecomp.AddressBook;
 
-
 import java.util.List;
 import java.util.Scanner;
 
 public class AddressBook {
 	public static void main(String[] args) {
+		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
 		Address objmain = new Address();
 		int n = 0;
