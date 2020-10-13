@@ -74,6 +74,7 @@ public class Contact {
 		this.emailId = emailId;
 	}
 	
+	
 	public String toString() {
 		String pattern = (firstName + " " + lastName + " " + city + " " + state + " " + " " + zip + " " + phoneNumber + " "
 				+ emailId + " ");
