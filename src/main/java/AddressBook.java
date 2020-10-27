@@ -1,12 +1,16 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class AddressBook {
+    static HashMap<String, Address> hashMap = new HashMap<String, Address>();
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        HashMap<String, Address> hashMap = new HashMap<String, Address>();
+
         System.out.println("Welcome to address book program");
         int k = 0;
         while (k < 9) {
@@ -135,4 +139,54 @@ public class AddressBook {
         }
         sc.close();
     }
+    public static void writeFile() {
+        BufferedWriter bf = null;
+        try {
+            String fileName = "F:\\addressbook.txt";
+            File f = new File(fileName);
+            boolean res = f.createNewFile();
+            if (res == false) {
+                System.out.println("File already created");
+            }
+            bf = new BufferedWriter(new FileWriter(fileName));
+            for (Map.Entry<String, Address> entry : hashMap.entrySet()) {
+                bf.write("AddressBookName " + entry.getKey() + ":" + entry.getValue());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                bf.close();
+            } catch (Exception e) {
+
+            }
+        }
+    }
+
+    public static void readFile() {
+        BufferedReader bf = null;
+        int ch = 0;
+        try {
+            String fileName = "F:\\addressbook.txt";
+            File f = new File(fileName);
+            boolean res = f.createNewFile();
+            if (res == false) {
+                System.out.println("Already Created");
+            }
+            bf = new BufferedReader(new FileReader(fileName));
+            while ((ch = bf.read()) != -1) {
+                System.out.print((char) ch);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                bf.close();
+            } catch (Exception e) {
+
+            }
+        }
+    }
+
 }
